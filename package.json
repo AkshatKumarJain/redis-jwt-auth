@@ -1,0 +1,19 @@
+{
+  "name": "redis-jwt-auth",
+  "version": "1.0.0",
+  "description": "A package that handles tokens for authentication.",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "auth",
+    "jwt",
+    "redis",
+    "tokens"
+  ],
+  "author": "Akshat Jain",
+  "license": "ISC"
+}
