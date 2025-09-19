@@ -4,6 +4,7 @@ export const parseExpiryToSeconds = (exp) => {
 
     const num = parseInt(exp.slice(0, -1));
     const unit = exp.slice(-1);
+    
     if(unit === 's')
     return num;
     if(unit === 'm')
