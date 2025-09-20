@@ -57,12 +57,13 @@ export const rotateRefreshToken = async (oldRefreshToken) => {
 }
 
 export const revokeAll = async (userId) => {
+    
     const keys = await store.keys(`refresh:${userId}:*`);
-    if(keys && keys.length)
-    {
+    if (!keys || keys.length === 0) return false; // no tokens found
+    console.log(keys);
         for(const k of keys)
         {
             await store.delKey(k);
         }
-    }
+        return true;
 }
