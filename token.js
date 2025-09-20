@@ -5,6 +5,7 @@ import { parseExpiryToSeconds } from "./utils/auth.util.js";
 import * as memoryStore from "./stores/memory.store.js";
 import * as redisStore from "./stores/redis.store.js";
 
+
 const store = config.isProd ? redisStore : memoryStore;
 
 const genJti = () => {
