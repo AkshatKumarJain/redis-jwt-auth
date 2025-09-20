@@ -2,10 +2,10 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto"
 import config from "./config.js";
 import { parseExpiryToSeconds } from "./utils/auth.util.js";
-import { setKey, getKey, delKey, keys } from "./stores/memory.store.js";
-import { setKey, getKey, delKey, keys } from "./stores/redis.store.js";
+import * as memoryStore from "./stores/memory.store.js";
+import * as redisStore from "./stores/redis.store.js";
 
-const store = config.isProd ? redis : memory;
+const store = config.isProd ? redisStore : memoryStore;
 
 const genJti = () => {
     return crypto.randomBytes(16).toString("hex");

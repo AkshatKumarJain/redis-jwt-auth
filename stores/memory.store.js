@@ -1,32 +1,33 @@
-const store = new Map();
+const memory = new Map();
+
 
 export const setKey = (key, value, ttlSeconds) => {
     const expiresAt = Date.now() + ttlSeconds * 1000;
-    store.set(key, { value, expiresAt });
+    memory.set(key, { value, expiresAt });
 }
 
 export const getKey = (key) => {
-    const obj = store.get(key);
+    const obj = memory.get(key);
     if(!obj)
     return null;
 
-    if(Date.now > obj.expiresAt)
+    if(Date.now() > obj.expiresAt)
     {
-        store.delete(key);
+        memory.delete(key);
         return null;
     }
     return obj.value;
 }
 
 export const delKey = (key) => {
-    store.delete(key);
+    memory.delete(key);
 }
 
 export const keys = (pattern) => {
     const parts = pattern.split("*");
     const res = [];
 
-    for(const k of store.keys()) {
+    for(const k of memory.keys()) {
         if(k.startsWith(parts[0]))
         res.push(k);
     }

@@ -12,18 +12,20 @@ export const authMiddleware = (options = {}) => {
             else if(req.headers.authorization)
             {
                 const authHeader = req.headers.authorization;
-                parts = authHeader.split(" ")[1];
+                const parts = authHeader.split(" ")[1];
                 if(parts[1])
                 token = parts[1];
                 if(!token)
                 {
+                    console.log("no token");
                     return res.status(401).json({ error: "No token provided" });
                 }
 
                 const decoded = verifyAccessToken(token);
                 req.user = decoded;
-                next();
+                // next();
             }
+            next();
         } catch (error) {
             return res.status(403).json({ error: "Invalid or expired token" });
         }
