@@ -60,12 +60,12 @@ app.get("/", async (_, res) => {
 
 ```js
 // set
- config.isProd = true
+ config.isProd = true //
 // by default it is false
 ```
 ## Public routes
 
-## when it should work even if no token is provided
+# when it should work even if no token is provided
 
 ```js
 app.post("/login", async (req, res) => {
@@ -99,8 +99,7 @@ app.get("/private", authMiddleware({ required: true }), (req, res) => {
 ```
 
 ## logout
-
-## revoke all
+# revoke all
 ```js
 app.post("/logout", async (req, res) => {
   const { userId } = req.body;
