@@ -26,7 +26,9 @@ Features
 ```bash
 npm install redis-jwt-auth
 
+
 ---
+
 
 ## Quick start
 
