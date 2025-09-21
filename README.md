@@ -1,6 +1,7 @@
-It is a package that efficiently handles the boredom of users of writing the same code for generating **tokens** and verifying them in **authentication** related stuff again and again.
-It does so by giving some functions-
+****redis-jwt-auth****
 
+ A lightweight Node.js authentication utility for handling JWT access & refresh tokens with Redis (or in-memory fallback).
+Includes Express middleware for protecting routes and enforcing HTTPS.
 **issueToken**:- 
 
 
