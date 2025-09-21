@@ -25,12 +25,11 @@ Features
 ## Installation
 ```bash
 npm install redis-jwt-auth
-
+```
 
 ---
 
-
-Quick start
+## Quick start
 
 ## setup basic express setup
 
