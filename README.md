@@ -9,10 +9,16 @@ Includes Express middleware for protecting routes and enforcing HTTPS.
 ---
 
 ## Features
-- Issue Access & Refresh Tokens
-- Rotate & Revoke Refresh Tokens
-- Supports Redis for production & in-memory store for development
-- Secure JWT Authentication Middleware
+Features
+- Access tokens (short-lived JWTs)
+- Refresh tokens (long-lived JWTs, rotated & revocable)
+- Token rotation – old refresh tokens invalidated on use
+- Revocation – revoke all refresh tokens for a user
+- Express middleware:
+- authMiddleware → protect routes with access tokens
+- requireHttps → enforce HTTPS in production
+- Redis or in-memory store – auto-selects based on environment
+- Secure cookies – HttpOnly + Secure for refresh tokens
 
 ---
 
