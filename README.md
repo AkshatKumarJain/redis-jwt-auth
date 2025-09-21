@@ -28,10 +28,10 @@ npm install redis-jwt-auth
 
 ---
 
-# Quick start
+## Quick start
 
 ## setup basic express setup
-```bash
+```js
 import express from "express";
 import cookieParser from "cookie-parser";
 import { issueTokens, rotateRefreshToken, revokeAll } from "redis-jwt-auth";
