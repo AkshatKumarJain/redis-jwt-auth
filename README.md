@@ -1,5 +1,6 @@
 # Redis JWT Auth
-A Node.js package for secure JWT-based authentication with Redis support.
+A lightweight Node.js authentication utility for handling JWT access & refresh tokens with Redis (or in-memory fallback).
+Includes Express middleware for protecting routes and enforcing HTTPS.
 
 [![npm version](https://img.shields.io/npm/v/redis-jwt-auth.svg)](https://www.npmjs.com/package/redis-jwt-auth)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
