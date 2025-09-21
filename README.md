@@ -25,3 +25,21 @@ Features
 ## Installation
 ```bash
 npm install redis-jwt-auth
+
+---
+
+# Quick start
+
+## setup basic express setup
+```bash
+import express from "express";
+import cookieParser from "cookie-parser";
+import { issueTokens, rotateRefreshToken, revokeAll } from "redis-jwt-auth";
+import { authMiddleware, requireHttps } from "redis-jwt-auth";
+
+const app = express();
+app.use(express.json());
+app.use(cookieParser());
+app.use(requireHttps); // enforce HTTPS in production(can be used in required routes only)
+
+
