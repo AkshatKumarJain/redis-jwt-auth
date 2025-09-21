@@ -43,5 +43,84 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(requireHttps); // enforce HTTPS in production(can be used in required routes only)
+```
+
+## login
+
+```js
+app.get("/", async (_, res) => {
+  const userId = "1";
+    const {accessToken, refreshToken} = await issueTokens({ userId });
+    console.log("accessToken ",accessToken, "\n", "refreshToken ", refreshToken);
+    console.log("userId ", userId);
+    res.send("tokens are issued");
+})
+```
+## for production
+
+```js
+// set
+ config.isProd = true
+// by default it is false
+```
+## Public routes
+
+## when it should work even if no token is provided
+
+```js
+app.post("/login", async (req, res) => {
+  const { userId } = req.body; // normally you'd validate from DB
+  const { accessToken, refreshToken } = await issueTokens({ userId });
+
+  // send refresh token as HttpOnly cookie
+  res.cookie("refreshToken", refreshToken, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict"
+  });
+
+  res.json({ accessToken });
+});
+
+```
+
+## private routes
+
+```js
+// Public route (auth optional)
+app.get("/public", authMiddleware(), (req, res) => {
+  res.json({ route: "public", user: req.user || null });
+});
+
+// Private route (auth required)
+app.get("/private", authMiddleware({ required: true }), (req, res) => {
+  res.json({ route: "private", user: req.user });
+});
+```
+
+## logout
+
+## revoke all
+```js
+app.post("/logout", async (req, res) => {
+  const { userId } = req.body;
+  await revokeAll(userId);
+
+  res.clearCookie("refreshToken");
+  res.json({ ok: true });
+});
+```
+
+## configurations
+```js
+NODE_ENV=development | production
+AUTH_MODE=dev | prod
+JWT_ACCESS_SECRET=****
+JWT_REFRESH_SECRET=*****
+ACCESS_TOKEN_EXPIRY=****
+REFRESH_TOKEN_EXPIRY=****
+REDIS_URL=****
+COOKIE_DOMAIN=****
+```
 
 
