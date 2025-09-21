@@ -1,11 +1,10 @@
 {
   "name": "redis-jwt-auth",
   "version": "1.0.0",
-  "description": "A package that handles tokens for authentication.",
+  "description": "JWT authentication utilities with access & refresh tokens, Redis or memory store, and Express middleware.",
   "main": "app.js",
   "type": "module",
   "scripts": {
-    "start": "node app.js",
     "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,7 +15,7 @@
     "tokens"
   ],
   "author": "Akshat Jain",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "nodemon": "^3.1.10"
   },

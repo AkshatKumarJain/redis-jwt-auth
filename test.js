@@ -1,9 +1,18 @@
-import { authMiddleware, issueTokens, rotateRefreshToken, revokeAll } from "./app.js";
+import { authMiddleware, issueTokens, rotateRefreshToken, revokeAll, requireHttps } from "./app.js";
 import express from "express";
+import config from "./app.js";
 
 const app = express();
 
 app.use(express.json());
+
+// set isProd = true if HTTPs security is required 
+// else it is false by default allowing developers to use http requesting
+config.isProd = false;
+
+app.get("/sensitive", requireHttps, (req, res) => {
+  res.json({ message: "This is secure" });
+});
 
 app.get("/", async (_, res) => {
   const userId = "1";
